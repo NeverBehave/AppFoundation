@@ -1,5 +1,3 @@
-const jwt = require('jsonwebtoken')
-
 // // // //
 
 // Authorization middleware - rejects requests

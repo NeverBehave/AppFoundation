@@ -12,10 +12,10 @@ function encryptPassword(password) {
 }
 
 const collection_options = {
-    timestamps: {
-        createdAt: 'createdOn',
-        updatedAt: 'updatedOn'
-    },
+    // timestamps: {
+    //     createdAt: 'createdOn',
+    //     updatedAt: 'updatedOn'
+    // },
     versionKey: false
 }
 
@@ -51,19 +51,14 @@ const User = new Schema(userAttributes, collection_options);
 // // // //
 
 // Create new User document
-// TODO - add email
 User.statics.create = function ({
-    name,
     email,
-    username,
     password
 }) {
 
     // Instantiates new User model
     const user = new this({
-        name,
         email,
-        username,
         password: encryptPassword(password)
     })
 
@@ -71,14 +66,16 @@ User.statics.create = function ({
     return user.save()
 }
 
-// findOneByUsername
-// Find one User by username
-User.statics.findOneByUsername = function (username) {
+// findOneByEmail
+// Find one User by email
+User.statics.findOneByEmail = function (email) {
     // Executes MongoDb query
     return this.findOne({
-        username
+        email
     }).exec()
 }
+
+// findPme
 
 // verify
 // Verifies the password parameter of POST /auth/login requests

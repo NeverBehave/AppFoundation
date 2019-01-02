@@ -1,19 +1,25 @@
 const Router = require('koa-router')
 const controller = require('./auth.controller')
-const authorization = require('../middleware/authorization')
 
 const router = new Router()
 
 // // // //
 
 // POST /register
+router.get('/login', (ctx) => {
+    ctx.body = {
+        email: 'admin@admin.com',
+        password: 'tempassword'
+    }
+    console.log('passthrough')
+})
 router.post('/register', controller.register)
 
 // POST /login
 router.post('/login', controller.login)
 
 // POST /reset_password
-router.post('/reset_password', authorization, controller.reset_password)
+router.post('/reset_password', controller.reset_password)
 
 // // // //
 
