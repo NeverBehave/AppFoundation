@@ -6,6 +6,8 @@ import InitLayout from '@/layouts/initLayout'
 
 import HomeRouter from '@/modules/home/router'
 import AuthRouter from '@/modules/auth/router'
+import UserRouter from '@/modules/user/router'
+import DashBoardRouter from '@/modules/dashboard/router'
 
 Vue.use(Router)
 
@@ -29,6 +31,8 @@ export default new Router({
     path: '',
     component: MainLayout,
     children: [
+      ...UserRouter,
+      ...DashBoardRouter
     ]
   },
   { // Fallback
