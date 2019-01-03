@@ -6,13 +6,11 @@ passport.serializeUser(function (user, done) {
     done(null, user._id)
 })
 
-passport.deserializeUser(async function (id, done) {
-    try {
-        const user = User.findById(id).exec()
-        done(null, user)
-    } catch (err) {
-        done(err)
-    }
+passport.deserializeUser(function (id, done) {
+    return User.findById(id).exec().then(user => {
+        return done(null, user)
+    })
 })
 
 require('./local')
+require('./api')

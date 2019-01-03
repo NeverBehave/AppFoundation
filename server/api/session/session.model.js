@@ -16,6 +16,10 @@ const sessionAttributes = {
         type: String,
         default: null,
     },
+    last_access: {
+        type: Number,
+        default: null
+    },
     ip: {
         type: String,
         required: true
@@ -33,12 +37,20 @@ Session.virtual('user', {
 })
 
 Session.statics.findOneByToken = function (token) {
-    return this.findOne({ token }).exec()
+    return this.findOne({
+        token
+    }).populate('user').exec()
 }
 
-Session.statics.create = async function ({
+Session.statics.findTokenByUserId = function (user_id) {
+    return this.find({
+        user_id
+    }).exec()
+}
+
+Session.statics.create = async function (
     user, user_agent, ip
-}) {
+) {
     let token = await uidgen.generate() // -> 'B1q2hUEKmeVp9zWepx9cnp',
     // Instantiates new Session model
     const session = new this({

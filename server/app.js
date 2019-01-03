@@ -1,6 +1,7 @@
 const Koa = require('koa')
 const bodyParser = require('koa-bodyparser')
 const logger = require('koa-logger')
+const cors = require('@koa/cors')
 
 // // // //
 
@@ -21,8 +22,13 @@ app.use(passport.initialize())
 
 
 // Routes
-const route = require('./router')
+const authRouter = require('./router/auth')
+app.use(authRouter.routes(), authRouter.allowedMethods())
+
+const route = require('./router/router')
 app.use(route.routes(), route.allowedMethods())
+
+app.use(cors())
 
 // // // //
 

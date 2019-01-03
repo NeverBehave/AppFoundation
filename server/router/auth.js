@@ -1,5 +1,4 @@
 const Router = require('koa-router')
-//const authorization = require('../middleware/authorization')
 
 const router = new Router({
     prefix: '/api',
@@ -7,8 +6,11 @@ const router = new Router({
 // // // //
 
 // Bootstrap API module routers
-const auth = require('./api/auth')
+// !!Router here will not be protected by Auth Middleware
+const auth = require('../api/auth')
 router.use('/auth', auth.routes(), auth.allowedMethods())
+
+//router.use(authorization)
 // // // //
 
 module.exports = router

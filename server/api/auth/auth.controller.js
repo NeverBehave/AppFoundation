@@ -13,7 +13,7 @@ exports.register = (ctx, next) => {
     const {
         password,
         email
-    } = req.body
+    } = ctx.request.body
 
     // Create a new User instance if one does not exist
     const create = (user) => {
@@ -32,20 +32,22 @@ exports.register = (ctx, next) => {
 
     // Respond to the client
     const respond = (user) => {
-        res.json({
+        ctx.body = {
             message: 'Registered Successfully.'
-        })
+        }
     }
 
     // Handle error (email exists)
     const onError = (error) => {
-        res.status(409).json({
+        ctx.status = 409
+        ctx.body = {
             message: error.message
-        })
+        }
+        next()
     }
 
     // check username duplication
-    User.findOneByEmail(email)
+    return User.findOneByEmail(email)
         .then(create)
         .then(respond)
         .catch(onError)
@@ -67,7 +69,7 @@ exports.login = (ctx, next) => {
         }
 
         if (!user) {
-            ctx.status = 401
+            ctx.status = 403
             ctx.body = {
                 success: false,
                 ...info
@@ -76,7 +78,7 @@ exports.login = (ctx, next) => {
         }
 
         // Generate Token for user
-        Session.create(user, ctx.request.header['user-agent'], ctx.request.ip).then((session) => {
+        return Session.create(user, ctx.request.header['user-agent'], ctx.request.ip).then((session) => {
             console.log('generating token for user')
             ctx.status = 200
             ctx.body = {

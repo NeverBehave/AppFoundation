@@ -9,11 +9,8 @@ passport.use(new LocalStrategy(
         session: false
     }, 
     function (email, password, done) {
-        User.findOneByEmail(email)
-        .then((err, user) => {
-            if (err) {
-                return done(err);
-            }
+        return User.findOneByEmail(email)
+        .then((user) => {
             if (!user) {
                 return done(null, false, {
                     message: 'Incorrect email.'

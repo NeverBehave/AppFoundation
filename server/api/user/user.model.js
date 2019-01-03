@@ -20,10 +20,6 @@ const collection_options = {
 }
 
 const userAttributes = {
-    email: {
-        type: String,
-        required: true
-    },
     password: {
         type: String,
         required: true
@@ -39,7 +35,7 @@ const userAttributes = {
     },
     username: {
         type: String,
-        required: true,
+        required: false,
         unique: true
     },
 }
