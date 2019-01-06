@@ -94,11 +94,39 @@ exports.login = (ctx, next) => {
 // // // //
 
 // POST /api/auth/reset_password
-exports.reset_password = (req, res) => {
+exports.reset_password = (ctx, next) => {
     console.log('TODO - reset password logic')
     // Password reset workflow (option A):
     // 1 - Fetch User -> User.findByUsername(req.user.username)
     // 2 - Generate RandomPassword
     // 3 - Email RandomPassword to User.email
     // 4 - Assign User.password = RandomPassword
+}
+
+exports.getMe = (ctx, next) => {
+    let token = ctx.header['token']
+
+    if (token) {
+        return Session.findOneByToken(token).then((doc) => {
+            if (doc) {
+                ctx.body = {
+                    user_id: doc.user._id
+                }
+            } else {
+                ctx.status = 401
+                ctx.body = {
+                    message: 'Token No Found'
+                }
+            }
+
+            return next()
+        })
+    } 
+
+    ctx.status = 401
+    ctx.body = {
+        message: "Token Required."
+    }
+
+    return next()
 }

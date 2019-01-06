@@ -12,10 +12,10 @@ function encryptPassword(password) {
 }
 
 const collection_options = {
-    // timestamps: {
-    //     createdAt: 'createdOn',
-    //     updatedAt: 'updatedOn'
-    // },
+    timestamps: {
+         createdAt: 'createdOn',
+         updatedAt: 'updatedOn'
+    },
     versionKey: false
 }
 
@@ -90,6 +90,9 @@ User.methods.assignAdmin = function () {
     return this.save()
 }
 
+User.methods.isAdmin = function () {
+    return this.admin === true
+}
 
 // TODO - absract schema.class_name
 module.exports = mongoose.model('User', User)

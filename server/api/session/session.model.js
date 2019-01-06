@@ -23,6 +23,10 @@ const sessionAttributes = {
     ip: {
         type: String,
         required: true
+    },
+    expired: {
+        type: Boolean,
+        default: false,
     }
 }
 
