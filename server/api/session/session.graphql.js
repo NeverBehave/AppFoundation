@@ -29,12 +29,12 @@ const SessionTC = composeWithMongoose(Session, customizationOptions)
 // via graphql-compose it will be much much easier, with less typing
 const Query = {
     ...adminOrIndividual('user_id', {
-        sessionsByUserId: SessionTC.getResolver('findMany')
+        sessionsByUserId: SessionTC.getResolver('findMany'),
+        sessionCount: SessionTC.getResolver('count'),
     }),
     ...adminAccess({
         sessionByIds: SessionTC.getResolver('findByIds'),
         sessionOne: SessionTC.getResolver('findOne'),
-        sessionCount: SessionTC.getResolver('count'),
     })
     // userConnection: SessionTC.getResolver('connection'),
     // userPagination: SessionTC.getResolver('pagination'),

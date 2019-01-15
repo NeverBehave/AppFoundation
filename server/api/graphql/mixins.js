@@ -16,7 +16,7 @@ module.exports = {
                     return next(rp)
                 }
 
-                return null
+                throw new Error('Only Admin is allowed to perform this query')
             })
         })
         return resolvers
@@ -69,7 +69,7 @@ module.exports = {
                     }
                 }
                  
-                throw new Error('User is not allow to acces the data')
+                throw new Error('User is not allow to access the data')
             })
         })
 

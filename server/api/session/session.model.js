@@ -10,7 +10,8 @@ const sessionAttributes = {
     },
     token: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     user_agent: {
         type: String,

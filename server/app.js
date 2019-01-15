@@ -17,16 +17,16 @@ app.use(logger());
 // parse JSON and url-encoded query
 app.use(bodyParser());
 
+// Add headers
+app.use(cors())
+
 // Init passport
 const passport = require('koa-passport')
 app.use(passport.initialize())
 
-
 // Routes
 const m = require('./mount')
 app.use(mount(m))
-
-app.use(cors())
 
 // // // //
 

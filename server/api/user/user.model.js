@@ -36,7 +36,6 @@ const userAttributes = {
     username: {
         type: String,
         required: false,
-        unique: true
     },
 }
 

@@ -83,7 +83,8 @@ exports.login = (ctx, next) => {
             ctx.status = 200
             ctx.body = {
                 success: true,
-                token: session.token
+                token: session.token,
+                user_id: user._id
             }
             return next()
         })
@@ -104,29 +105,32 @@ exports.reset_password = (ctx, next) => {
 }
 
 exports.getMe = (ctx, next) => {
-    let token = ctx.header['token']
-
-    if (token) {
-        return Session.findOneByToken(token).then((doc) => {
-            if (doc) {
-                ctx.body = {
-                    user_id: doc.user._id
-                }
-            } else {
-                ctx.status = 401
-                ctx.body = {
-                    message: 'Token No Found'
-                }
+    return passport.authenticate('api-local', {
+        session: false
+    }, (err, user, info) => {
+        if (err) {
+            console.log(err)
+            ctx.status = 503
+            ctx.body = {
+                success: false
             }
+            return
+        }
 
-            return next()
-        })
-    } 
+        if (!user) {
+            ctx.status = 401
+            ctx.body = {
+                success: false,
+                ...info
+            }
+            return
+        }
 
-    ctx.status = 401
-    ctx.body = {
-        message: "Token Required."
-    }
+         ctx.body = {
+             user_id: user._id
+         }
 
-    return next()
+         next()
+        
+    })(ctx, next)
 }
