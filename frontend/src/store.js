@@ -4,7 +4,6 @@ import Vuex from 'vuex'
 
 import home from '@/modules/home/store'
 import auth from '@/modules/auth/store'
-import user from '@/modules/user/store'
 
 Vue.use(Vuex)
 
@@ -13,8 +12,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   modules: {
     home,
-    auth,
-    user
+    auth
   }
   // plugins: [createPersistedState({
   //   reducer(state) {

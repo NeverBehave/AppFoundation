@@ -7,7 +7,6 @@
   </b-row>
 </template>
 
-
 <script>
 import RegisterCard from '../components/RegisterCard'
 import SideCard from '../components/SideCard'

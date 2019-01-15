@@ -37,7 +37,7 @@
         <b-nav-item-dropdown
           text="Navigate"
           right>
-          <b-dropdown-item :to="{'name': 'User'}">
+          <b-dropdown-item :to="{'name': 'Profile'}">
             Welcome, {{ name }}
           </b-dropdown-item>
           <br>
@@ -63,7 +63,7 @@
 export default {
   name: 'NavBar',
   computed: {
-    appName() {
+    appName () {
       return this.$store.getters['home/name']
     },
     name () {

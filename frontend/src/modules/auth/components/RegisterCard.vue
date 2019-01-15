@@ -42,14 +42,14 @@ import Form from '@/mixins/form'
 export default {
   name: 'RegisterCard',
   mixins: [Form],
-  data() {
+  data () {
     return {
       email: null,
-      password: null,
+      password: null
     }
   },
   methods: {
-    submit() {
+    submit () {
       this.submitting = true
       this.$store.dispatch('auth/register', {
         email: this.email,

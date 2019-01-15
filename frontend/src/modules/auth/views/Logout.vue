@@ -6,7 +6,6 @@
   </b-row>
 </template>
 
-
 <script>
 import LogoutCard from '../components/LogoutCard'
 
@@ -14,7 +13,7 @@ export default {
   components: {
     LogoutCard
   },
-  data() {
+  data () {
   },
   methods: {
   }

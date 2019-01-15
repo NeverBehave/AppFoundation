@@ -9,7 +9,7 @@ axios.interceptors.request.use((config) => {
   console.log(token)
   if (token) {
     // Authentication Authorization
-    config.headers.common['Authentication'] = 'Bearer ' + token
+    config.headers.common['token'] = token
   }
   return config
 }, function (error) {

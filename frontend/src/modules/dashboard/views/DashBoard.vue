@@ -11,12 +11,10 @@
 </div>
 </template>
 
-
 <script>
 export default {
   name: 'DashBoard',
   mounted () {
-    this.$store.dispatch('user/getMe')
   }
 }
 </script>

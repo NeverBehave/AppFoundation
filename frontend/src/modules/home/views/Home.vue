@@ -31,7 +31,7 @@
 export default {
   name: 'Home',
   computed: {
-    appName() {
+    appName () {
       return this.$store.getters['home/name']
     }
   }

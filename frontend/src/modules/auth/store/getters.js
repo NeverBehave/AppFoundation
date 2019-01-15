@@ -2,7 +2,7 @@ export default {
   token: (state) => {
     return state.token
   },
-  authAPI: (state) => {
-    return state.authAPI
+  userId: (state) => {
+    return state.userId
   }
 }

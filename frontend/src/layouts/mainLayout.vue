@@ -28,7 +28,9 @@ export default {
   components: {
     NavBar
   },
-  mounted (){
+  mounted () {
+    // Check the token and let's rock
+    this.$store.dispatch('auth/validateUserState')
   }
 }
 </script>
