@@ -1,6 +1,6 @@
 
 <template>
-  <div id="normal">
+  <div id="normal" class="mb-5">
     <NavBar/>
     <b-container
       fluid
@@ -23,6 +23,7 @@
 
 <script>
 import NavBar from '@/components/NavBar.vue'
+
 export default {
   name: 'NormalLayout',
   components: {
