@@ -1,8 +1,0 @@
-query ($id: MongoID!){
-  sessionsByUserId(filter: {user_id: $id}){
-      _id,
-      ip,
-      user_agent,
-      last_access
-  }
-}

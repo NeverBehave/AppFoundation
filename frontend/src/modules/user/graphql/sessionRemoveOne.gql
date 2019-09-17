@@ -1,7 +1,0 @@
-mutation ($id: MongoID!){
-  sessionRemoveOne(filter: {_id: $id}){
-    record{
-      _id
-    }
-  }
-}
