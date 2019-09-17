@@ -1,4 +1,4 @@
-const Router = require('koa-router')
+const Router = require('@koa/router')
 const controller = require('./auth.controller')
 
 const router = new Router()
@@ -11,7 +11,6 @@ router.get('/login', (ctx) => {
         email: 'admin@admin.com',
         password: 'tempassword'
     }
-    console.log('passthrough')
 })
 router.post('/register', controller.register)
 

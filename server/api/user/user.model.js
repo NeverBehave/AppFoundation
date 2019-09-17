@@ -24,10 +24,6 @@ const userAttributes = {
         type: String,
         required: true
     },
-    admin: {
-        type: Boolean,
-        default: false
-    },
     email: {
         type: String,
         required: true,

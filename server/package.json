@@ -13,23 +13,19 @@
   },
   "dependencies": {
     "@koa/cors": "2",
-    "apollo-server-koa": "^2.3.1",
+    "@koa/router": "^8.0.1",
     "dotenv": "^6.2.0",
-    "graphql": "^14.0.2",
-    "graphql-compose": "^5.4.0",
-    "graphql-compose-connection": "^4.0.0",
-    "graphql-compose-mongoose": "^5.2.1",
-    "graphql-compose-pagination": "^4.0.0",
     "koa": "^2.6.2",
     "koa-bodyparser": "^4.2.1",
     "koa-logger": "^3.2.0",
     "koa-mount": "^4.0.0",
     "koa-passport": "^4.1.1",
-    "koa-router": "^7.4.0",
     "mongoose": "^5.4.1",
-    "nodemon": "^1.18.9",
     "passport-custom": "^1.0.5",
     "passport-local": "^1.0.0",
     "uid-generator": "^1.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.2"
   }
 }

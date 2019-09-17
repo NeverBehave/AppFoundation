@@ -5,10 +5,6 @@ require('../auth/passport')
 // Authorization middleware - rejects requests
 // with missing, invalid, or expired tokens.
 module.exports = function (ctx, next) {
-    // Bypass Editor
-    if (ctx.path === '/' && ctx.method === 'GET'){
-        return next()
-    }
     return passport.authenticate('api-local', {
         session: false
     },(err, user, info) => {

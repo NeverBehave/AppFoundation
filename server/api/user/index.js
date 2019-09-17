@@ -1,11 +1,8 @@
-const Router = require('koa-router')
-const controller = require('./user.controller')
-const router = new Router()
+const Koa = require('koa')
+const router = require('./router')
 
-// // // //
+const app = new Koa()
 
-router.get('/profile', controller.profile)
+app.use(router.routes(), router.allowedMethods())
 
-// // // //
-
-module.exports = router
+module.exports = app
