@@ -8,8 +8,6 @@ import './toasted'
 
 import './axios'
 
-import './apollo'
-
 import './day'
 
 import './fa'
