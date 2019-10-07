@@ -1,4 +1,4 @@
-# Line up 
+# Example APP
 
 ## Setup
 
