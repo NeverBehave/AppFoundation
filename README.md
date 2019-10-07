@@ -1,4 +1,6 @@
-# System/APP Prototype
+# APP Prototype
+
+This is a sample project to demonstrate how to start prototying an APP with JavaScript. 
 
 ## Components
 
@@ -11,15 +13,9 @@
 
 - Vue
 - Bootstrap
-- Apollo-client
 
 ### Backend 
 
 - Nodejs
 - Koa
-- Apollo-Server/Graphql
 - Mongoose/Mongodb
-
-
-
-Manage User Status
